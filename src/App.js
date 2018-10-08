@@ -1,25 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+//import { createStore } from 'redux';
+import { store } from "./store";
+//import reducer from './reducers';
+import HelloWorld from './components/HelloWorld';
+import ButtonGroup from './components/ButtonGroup';
 
+//const initialState = { tech: "React " };
+//const store = createStore(reducer,initialState);  
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h3>Application state:</h3>
+        <div>{store.getState().tech} </div>
+        <HelloWorld key={1} tech={store.getState().tech} />
+        <ButtonGroup key={2} technologies={["React JS", "Angular JS", "React-redux","Node JS"]} />
       </div>
     );
   }
